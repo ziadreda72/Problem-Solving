@@ -9,6 +9,7 @@ using i64 = long long;
 
 struct Edge{
     int i , j , d;
+    
     Edge(int i , int j , int d): i(i) , j(j) , d(d){}
 
     bool operator < (const Edge& other){
