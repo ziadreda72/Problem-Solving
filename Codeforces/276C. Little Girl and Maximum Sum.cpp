@@ -10,9 +10,8 @@ int32_t main() {
         int n , q;
         cin >> n >> q;
         vector < int > a(n);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
                 cin >> a[i];
-        }
         vector < int > par(n);
         while (q--){
                 int l , r;
@@ -22,15 +21,13 @@ int32_t main() {
                 if(r + 1 < n)
                         par[r + 1]--;
         }
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < n; ++i)
                 par[i] += par[i - 1];
-        }
         sort(par.begin(), par.end());
         sort(a.begin(), a.end());
         i64 ans = 0;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
                 ans += 1LL * a[i] * par[i];
-        }
         cout << ans;
         return 0;
 }
