@@ -21,7 +21,6 @@ int32_t main() {
         for (int i = 1; i <= n; ++i) {
                 cin >> a[i];
         }
-
         vector < query > queries(q);
         vector < int > par(n + 1 , 0) , pref_par(n + 1 , 0);
         for (int i = 0; i < q; ++i) {
