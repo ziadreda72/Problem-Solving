@@ -5,7 +5,6 @@ using namespace std;
 using i64 = long long;
 
 const int N = (int) 3e5 + 10;
-const i64 inf = (i64) -1e16;
 
 int n , a[N][2];
 i64 dp[N][2];
