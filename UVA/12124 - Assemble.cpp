@@ -16,8 +16,6 @@ void solveTC() {
                 mp[type].emplace_back(p , q);
                 st.insert(q);
         }
-        for(auto& [_ , v] : mp)
-                sort(v.begin(), v.end());
         int ans;
         for(auto x : st){
                 int b2 = 0;
