@@ -17,10 +17,7 @@ int32_t main() {
                 mp[a] += b;
                 sum += b;
         }
-        if(sum <= k){
-                cout << 1;
-                return 0;
-        }
+        mp[0] = 0;
         for(auto [a , b] : mp){
                 sum -= b;
                 if(sum <= k){
