@@ -40,13 +40,22 @@ int32_t main(){
                 int l , r;
                 cin >> l >> r;
                 int ans = INF;
-                for(int i = l ; i <= r ;){
-                        if(i % SQ == 0 && i + SQ - 1 <= r){
-                                ans = min(ans , b[i / SQ]);
-                                i += SQ;
-                        }else{
-                                ans = min(ans , a[i++]);
+                int c_l = l / SQ , c_r = r / SQ;
+                if(c_l == c_r){
+                        for(int i = l ; i <= r ; ++i){
+                                ans = min(ans , a[i]);
                         }
+                        cout << ans << '\n';
+                        continue;
+                }
+                for(int i = l , en = (c_l + 1) * SQ - 1 ; i <= en ; ++i){
+                        ans = min(ans , a[i]);
+                }
+                for(int i = c_l + 1 ; i < c_r ; ++i){
+                        ans = min(ans , b[i]);
+                }
+                for(int i = c_r * SQ ; i <= r ; ++i){
+                        ans = min(ans , a[i]);
                 }
                 cout << ans << '\n';
         }
