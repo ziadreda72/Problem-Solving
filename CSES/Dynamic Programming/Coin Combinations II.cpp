@@ -18,11 +18,9 @@ int32_t main(){
         vector < i64 > dp(x + 1 , 0LL);
         dp[0] = 1;
         for(auto c : a){
-                for(int i = 0 ; i <= x ; ++i){
-                        if(i + c <= x){
-                                dp[i + c] += dp[i];
-                                dp[i + c] %= MOD;
-                        }
+                for(int i = 0 ; i + c <= x ; ++i){
+                        dp[i + c] += dp[i];
+                        dp[i + c] %= MOD;
                 }
         }
 
