@@ -15,8 +15,6 @@ int32_t main(){
         vector < int > a(n);
         for(int i = 0 ; i < n ; ++i) cin >> a[i];
 
-        sort(a.begin() , a.end());
-
         vector < i64 > dp(x + 1 , 0LL);
         dp[0] = 1;
         for(auto c : a){
