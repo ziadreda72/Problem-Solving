@@ -1,4 +1,4 @@
-A#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 using i64 = long long;
@@ -42,11 +42,8 @@ int32_t main(){
                                 aux.clear();
                                 i++;
                         }else{
-                                string x;
-                                for(int j = 0 ; j < 2 ; ++j){
-                                        x += aux.back();
-                                        aux.pop_back();
-                                }
+                                aux.pop_back();
+                                aux.pop_back();
                                 i++;
                         }
                 }
