@@ -34,6 +34,6 @@ public:
 };
 
 /*
-    Time: O(nlog(n))
+    Time: O(nlog(n) + klog(n))
     Space: O(M) where M is the number of unique elements in "nums"
 */
