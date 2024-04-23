@@ -37,3 +37,45 @@ public:
     Time: O(nlog(n) + klog(n))
     Space: O(M) where M is the number of unique elements in "nums"
 */
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        /*
+            We've seen how to solve this problem in O(nlog(n) + klog(n)) time, can we optizime it to O(n) ?
+            Yes, we can using bucket sort trick.
+            We should notice that the number of unique elements in the input array never exceed its size(n),
+            it means we can create array called "bucket" where bucket[i] stores the unique elements that
+            occur exactly i times.
+            The prolem now is to iterate from n to 1 and just take the first k elements you face. 
+        */
+
+        // Just for simplicity
+        int n = (int) nums.size();
+
+        // We need a frequency hash-map to store the number of occurences of each element
+        unordered_map < int , int > freq;
+        for (auto &x : nums) 
+            ++freq[x];
+
+        // Now we create the bucket vector and for each [key, value] in our map, we push the key to bucket[value]
+        vector bucket(n + 1 , vector < int >());
+        for (auto &[key , val] : freq)
+            bucket[val].push_back(key);
+
+        // Now all we need is to iterate from n to 1 and take elements until k becomes zero
+        vector < int > ret;
+        for (int i = n ; i >= 1 && k ; --i) 
+            for (int j = 0 ; j < (int) bucket[i].size() && k-- ; ++j)
+                ret.push_back(bucket[i][j]);
+
+        return ret;
+    }
+};
+
+/*
+    Time: O(n)
+    Space: O(n)
+*/
