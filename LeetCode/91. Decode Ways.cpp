@@ -55,3 +55,47 @@ public:
 private:
     int n;
 };
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    int numDecodings(string s) {
+        /*
+            Now let's solve it with Bottom-Up DP.
+            Assume you are at index i and s[i] != 0, there are two cases:
+            First, take s[i] only and add dp[i] to dp[i + 1]
+            Second, take s[i + 1] also if i + 1 inside of string boarder
+            and add dp[i] to dp[i + 2].
+            The answer will be in dp[n].
+        */
+
+        int n = (int) s.size();
+
+        // Now we need a dp array to save the answer of sub-problems
+        vector < int > dp(n + 1 , 0);
+
+        // Base Case: dp[0] = 1 if s[0] != 0
+        dp[0] = s[0] != '0';
+
+        // Now start building the answer of sub-problems
+        for (int i = 0 ; i < n ; ++i) {
+            if (s[i] != '0') {
+                dp[i + 1] += dp[i];
+
+                // Now we need to check that s[i]s[i + 1] between [1 , 26]
+                int x = stoi(s.substr(i , 2));
+                if (i + 1 < n && (1 <= x && x <= 26))
+                    dp[i + 2] += dp[i];
+            }
+        }
+
+        // Answer is dp[n];
+        return dp[n];
+    }
+};
+
+/*
+    Time: O(n)
+    Space: O(n)
+*/
