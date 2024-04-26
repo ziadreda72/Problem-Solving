@@ -55,6 +55,6 @@ private:
 };
 
 /*
-    Time: O(4^n)
+    Time: O(n * 4^n)
     Space: O(4^n)
 */
